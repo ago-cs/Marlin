@@ -838,7 +838,7 @@
  * Set DISABLE_INACTIVE_? 'true' to shut down axis steppers after an idle period.
  * The Deactive Time can be overridden with M18 and M84. Set to 0 for No Timeout.
  */
-#define DEFAULT_STEPPER_DEACTIVE_TIME 120
+#define DEFAULT_STEPPER_DEACTIVE_TIME 600
 #define DISABLE_INACTIVE_X true
 #define DISABLE_INACTIVE_Y true
 #define DISABLE_INACTIVE_Z true  // Set 'false' if the nozzle could fall onto your printed part!
@@ -1327,7 +1327,7 @@
   #endif
 
   // Add an optimized binary file transfer mode, initiated with 'M28 B1'
-  //#define BINARY_FILE_TRANSFER
+  #define BINARY_FILE_TRANSFER
 
   /**
    * Set this option to one of the following (or the board's defaults apply):
@@ -1338,7 +1338,7 @@
    *
    * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
    */
-  //#define SDCARD_CONNECTION LCD
+  #define SDCARD_CONNECTION ONBOARD
 
 #endif // SDSUPPORT
 
@@ -2094,7 +2094,7 @@
                                                   // This short retract is done immediately, before parking the nozzle.
   #define FILAMENT_CHANGE_UNLOAD_FEEDRATE     10  // (mm/s) Unload filament feedrate. This can be pretty fast.
   #define FILAMENT_CHANGE_UNLOAD_ACCEL        25  // (mm/s^2) Lower acceleration may allow a faster feedrate.
-  #define FILAMENT_CHANGE_UNLOAD_LENGTH      100  // (mm) The length of filament for a complete unload.
+  #define FILAMENT_CHANGE_UNLOAD_LENGTH      150  // (mm) The length of filament for a complete unload.
                                                   //   For Bowden, the full length of the tube and nozzle.
                                                   //   For direct drive, the full length of the nozzle.
                                                   //   Set to 0 for manual unloading.
@@ -2267,7 +2267,7 @@
     #define X_CURRENT       800        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     16    // 0..256
-    #define X_RSENSE          0.11
+    #define X_RSENSE          0.062
     #define X_CHAIN_POS      -1    // <=0 : Not chained. 1 : MCU MOSI connected. 2 : Next in chain, ...
   #endif
 
@@ -2283,7 +2283,7 @@
     #define Y_CURRENT       800
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     16
-    #define Y_RSENSE          0.11
+    #define Y_RSENSE          0.062
     #define Y_CHAIN_POS      -1
   #endif
 
@@ -2299,7 +2299,7 @@
     #define Z_CURRENT       800
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     16
-    #define Z_RSENSE          0.11
+    #define Z_RSENSE          0.062
     #define Z_CHAIN_POS      -1
   #endif
 
@@ -2328,9 +2328,9 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT      800
+    #define E0_CURRENT      750
     #define E0_MICROSTEPS    16
-    #define E0_RSENSE         0.11
+    #define E0_RSENSE         0.062
     #define E0_CHAIN_POS     -1
   #endif
 
@@ -2408,7 +2408,7 @@
    * The default SW SPI pins are defined the respective pins files,
    * but you can override or define them here.
    */
-  //#define TMC_USE_SW_SPI
+  #define TMC_USE_SW_SPI
   //#define TMC_SW_MOSI       -1
   //#define TMC_SW_MISO       -1
   //#define TMC_SW_SCK        -1
@@ -2487,7 +2487,7 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 - Report driver parameters (Requires TMC_DEBUG)
    */
-  //#define MONITOR_DRIVER_STATUS
+  #define MONITOR_DRIVER_STATUS
 
   #if ENABLED(MONITOR_DRIVER_STATUS)
     #define CURRENT_STEP_DOWN     50  // [mA]
@@ -2546,7 +2546,7 @@
    *
    * Comment *_STALL_SENSITIVITY to disable sensorless homing for that axis.
    */
-  //#define SENSORLESS_HOMING // StallGuard capable drivers only
+  #define SENSORLESS_HOMING // StallGuard capable drivers only
 
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
     // TMC2209: 0...255. TMC2130: -64...63
@@ -2584,7 +2584,7 @@
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continous reporting.
    */
-  //#define TMC_DEBUG
+  #define TMC_DEBUG
 
   /**
    * You can set your own advanced settings by filling in predefined functions.
